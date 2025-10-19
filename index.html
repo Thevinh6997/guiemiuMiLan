@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng 20/10 - Gửi Tình Yêu Đến Mi Lan</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
+        /* Thiết lập box-sizing để padding và border không làm tăng kích thước phần tử */
+        * {
+            box-sizing: border-box; 
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffe6f2; /* Hồng phấn nhẹ */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 90%; /* Tăng chiều rộng để tối ưu không gian */
+            max-width: 1000px; /* Giảm max-width để phù hợp hơn với màn hình ngang */
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .left-side {
+            flex: 0 0 35%; /* Cố định chiều rộng phần trái để trái tim chiếm 1/2 màn hình (của container) */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ff99c8; 
+            position: relative;
+        }
+
+        .right-side {
+            flex: 1; /* Phần còn lại cho lời chúc */
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            text-align: left; /* Đặt text-align về left để chữ không bị căn giữa */
+        }
+
+        /* Hiệu ứng trái tim 3D và đập */
+        .heart {
+            font-size: 100px; 
+            color: #d90429; 
+            position: relative;
+            animation: beat 1.5s infinite alternate ease-in-out; 
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.7); 
+            transform: scale(1.0);
+        }
+
+        @keyframes beat {
+            0% { transform: scale(0.95); }
+            100% { transform: scale(1.05); }
+        }
+        
+        /* Hiệu ứng gõ chữ */
+        #typing-text {
+            min-height: 200px; 
+            text-align: left;
+            border-right: 2px solid #333; 
+            overflow: hidden;
+            font-size: 1.1em;
+            line-height: 1.8; /* Tăng line-height cho dễ đọc */
+            word-wrap: break-word; /* Đảm bảo từ dài sẽ xuống dòng */
+            white-space: pre-wrap; /* Quan trọng: Giữ định dạng xuống dòng và cho phép wrap */
+        }
+
+        /* Tiêu đề */
+        h2 {
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+        }
+        
+        /* Dòng chữ ký */
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2em; /* Tăng kích thước chữ ký */
+            color: #d90429;
+            margin-top: 30px;
+            font-style: italic;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* Điều chỉnh responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 95%;
+            }
+            .left-side {
+                flex: 1 1 auto;
+                height: 200px; /* Giảm chiều cao phần trái trên điện thoại */
+                padding: 20px 0;
+            }
+            .right-side {
+                padding: 25px;
+            }
+            .heart {
+                font-size: 80px;
+            }
+            .signature {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="heart">
+                &#x2764; 
+            </div>
+        </div>
+
+        <div class="right-side">
+            <h2 style="color: #d90429;">🎉 Chúc Mừng Ngày Phụ Nữ Việt Nam 20/10 🎉</h2>
+            <div id="typing-text"></div>
+        </div>
+    </div>
+
+    <div class="signature">
+        Anh yêu em, Mi Lan.
+    </div>
+
+    <script>
+        // Lời chúc của bạn
+        // Lưu ý: Thay vì dùng \n, tôi dùng <br> trong HTML để xuống dòng
+        const message = `Gửi cục nợ của đời béo,\nHôm nay đã là 20/10 ròi, em bé 2 ngày còn bận rộn nhiều, thật không\nđúng với ngày phụ nữ cho lắm, béo cũng đã nghĩ đến chuyện mua quà\nnhưng mà kinh tế không cho phép, nên béo chỉ biết làm ra tấm thiệp\nchúc mừng online này để an ủi em bé, quà thì khi nào béo có tiền ròi\nbéo sẽ đưa em bé i tơi sau :33\nĐừng buồn béo nhen, anh iu em bé, 20/10 zui zẻ, zợ iu của chui, chúc\nem bé mãi mãi xinh đẹp, mãi mãi dễ thương như bây giờ, học giỏi, cú\ngắng để hai đứa sau này dề một nhà :33, chúc em bé tất cả.\nMãi yêu em.`;
+
+        const typingElement = document.getElementById('typing-text');
+        let index = 0;
+        let speed = 50; // Tốc độ gõ chữ (miligiây)
+
+        // Thay đổi hàm typeWriter để xử lý xuống dòng và giữ khoảng trắng chính xác hơn
+        function typeWriter() {
+            if (index < message.length) {
+                const char = message.charAt(index);
+                
+                if (char === '\n') {
+                    // Xử lý xuống dòng: thêm thẻ <br> (xuống dòng) và &nbsp; (để giữ con trỏ không bị dính sát lề)
+                    typingElement.innerHTML += '<br><span style="display:inline-block; width:0;"></span>';
+                } else if (char === ' ') {
+                    // Xử lý khoảng trắng: dùng &nbsp; để khoảng trắng không bị mất
+                    typingElement.innerHTML += '&nbsp;';
+                } else {
+                    // Thêm ký tự bình thường
+                    typingElement.innerHTML += char;
+                }
+                index++;
+                setTimeout(typeWriter, speed);
+            } else {
+                // Sau khi gõ xong, xóa con trỏ nhấp nháy (border-right)
+                typingElement.style.borderRight = 'none';
+            }
+        }
+
+        // Bắt đầu hiệu ứng khi trang được tải
+        window.onload = function() {
+            typeWriter();
+        };
+    </script>
+</body>
+</html>
